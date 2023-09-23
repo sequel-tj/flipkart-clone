@@ -5,7 +5,8 @@ import { Box } from "@mui/material";
 
 const component = {
     padding: '0.6% 10px',
-    background: 'rgb(241, 242, 244)',
+    background: '#f1f3f6',
+    // background: 'rgb(241, 242, 244)',
 }
 
 const Home = () => {
