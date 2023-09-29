@@ -2,7 +2,7 @@
 
 import { Box, Button, Dialog, TextField, Typography, css } from '@mui/material';
 import { useState, useContext } from 'react';
-import { authenticateSignup } from '../../service/api';
+import { authenticateLogin, authenticateSignup } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
 const components = {
@@ -63,6 +63,14 @@ const createAccount = css`
     cursor: pointer
 `;
 
+const wrongCred = css`
+    font-size: 10px;
+    color: #ff6161;
+    line-height: 0;
+    margin-top: 10px;
+    font-weight: 200;
+`;
+
 const accountInitialization = {
     login: {
         view: 'login',
@@ -85,14 +93,22 @@ const signupInitialization = {
     phone: ''
 }
 
+const loginIntialization = {
+    username: '',
+    password: ''
+}
+
 const LoginDiaglog = ({open, setOpen}) => {
 
     const [account, toggleAccount] = useState(accountInitialization.login);
     const [signup, setSignup] = useState(signupInitialization);
+    const [login, setLogin] = useState(loginIntialization);
+    const [error, setError] = useState(false);
 
     const {setAccount} = useContext(DataContext);
 
     const handleClose = () => {
+        setError(false);
         setOpen(false);
     }
 
@@ -108,11 +124,28 @@ const LoginDiaglog = ({open, setOpen}) => {
         setSignup({...signup, [e.target.name]: e.target.value});
     }
 
+    const onValueChange = (e) => {
+        setLogin({...login, [e.target.name]: e.target.value});
+        // console.log(login);
+    }
+
     const signupUser = async () => {
         let response = await authenticateSignup(signup);
         if (!response) return;
         handleClose();
         setAccount(signup.firstname);
+    }
+
+    const loginUser = async () => {
+        let response = await authenticateLogin(login);
+        // console.log(response);
+        if (response.status === 200) {
+            handleClose();
+            setAccount(response.data.userData.firstname);
+        }
+        else {
+            setError(true);
+        }
     }
 
     return (
@@ -126,10 +159,13 @@ const LoginDiaglog = ({open, setOpen}) => {
                     {
                         account.view === 'login' ?
                         <Box css = {wrapper}>
-                            <TextField variant='standard' label="Enter Email/Mobile number"/>
-                            <TextField variant='standard' label="Enter Password"/>
+                            <TextField variant='standard' onChange={onValueChange} name='username' label="Enter username"/>
+
+                            {error && <Typography css={wrongCred}>Please enter valid username/password.</Typography>}
+
+                            <TextField variant='standard' onChange={onValueChange} name='password' label="Enter Password"/>
                             <Typography css={Text}> By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Typography>
-                            <Button css = {LoginBtn}>Login</Button>
+                            <Button css = {LoginBtn} onClick={loginUser}>Login</Button>
                             <Typography style = {{textAlign: 'center'}}>OR</Typography>
                             <Button css = {RequestOtp}>Request OTP</Button>
                             <Typography css = {createAccount} onClick={toggleSignup}>New to Flipkart? Create an account</Typography>
