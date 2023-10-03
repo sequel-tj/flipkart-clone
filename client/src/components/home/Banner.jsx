@@ -3,10 +3,10 @@ import "react-multi-carousel/lib/styles.css";
 import { bannerData } from "../../constants/data";
 
 const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1
-    },
+    // superLargeDesktop: {
+    //   breakpoint: { max: 4000, min: 3000 },
+    //   items: 1
+    // },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 1

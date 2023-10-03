@@ -4,11 +4,10 @@ import { navData } from '../../constants/data';
 
 const components = {
     display: 'flex', 
-    margin: "0 130px 0 130px", 
+    margin: "0px 130px 0 130px", 
     justifyContent: 'space-between',
     alignItems: 'center',
-    // background: 'yellow'
-            
+    // background: 'yellow'     
 };
 
 const Navbar = () => {
