@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { bannerData } from "../../constants/data";
+import { css } from "@emotion/react";
 
 const responsive = {
     // superLargeDesktop: {
@@ -21,6 +24,15 @@ const responsive = {
     }
   };
 
+  const image = css`
+    width: 100%;
+    height: 280px;
+    @media (max-width: 900px) {
+      object-fit: cover;
+      height: 180px;
+    }
+  `;
+
 
 const Banner = () => {
     return (
@@ -39,8 +51,7 @@ const Banner = () => {
         >
             {
                 bannerData.map((data, i) => {
-                    return <img key={i} src={data.url} alt="carousel-img" 
-                    style={{width: '100%', height: '280px'}}/>
+                    return <img key={i} src={data.url} alt="carousel-img" css={image} />
                 })
             }
         </Carousel>

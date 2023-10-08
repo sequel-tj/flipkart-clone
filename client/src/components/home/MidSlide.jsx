@@ -3,7 +3,14 @@
 import { Box, css } from "@mui/material";
 import Slide from "./Slide";
 
-const ad = css` 
+const leftComponent = css`
+    width: 83%;
+    @media (max-width: 900px) {
+        width: 100%;
+    }
+`;
+
+const rightComponent = css` 
     width: 17%;
     background: #fff;
     margin-left: 10px;
@@ -12,6 +19,9 @@ const ad = css`
     display: flex;
     justify-content: center;
     align-item: center;
+    @media (max-width: 900px) {
+        display: none;
+    }
 `
 
 
@@ -21,11 +31,11 @@ const MidSlide = ({ products, title, showTimer }) => {
 
     return (
         <Box style={{display: "flex"}}>
-            <Box style={{width: "83%"}}>
+            <Box css={leftComponent}>
                 <Slide products={products} title={title} showTimer={showTimer} />
             </Box>
 
-            <Box css={ad}>
+            <Box css={rightComponent}>
                 <img src={adURL} alt="ads" style={{width: "217px"}} />
             </Box>
         </Box>
