@@ -5,31 +5,30 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import Banner from "./Banner";
 import Slide from "./Slide";
-import { getProducts } from "../../redux/actions/productActions.js";
 import MidSlide from "./MidSlide";
 import MidSection from "./MidSection";
+
+import { getProducts } from "../../redux/actions/productActions.js";
+
 
 const component = {
     padding: '10px 0 0 0',
     position: 'relative',
     margin: '0px 10px 0px 10px',
     background: '#f1f3f6',
-    // background: 'rgb(241, 242, 244)',
 }
 
 
 const Home = () => {
 
-    let { products } = useSelector(state => state.getProducts);
-    // console.log(products);
-
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch])
-
     
+    let { products } = useSelector(state => state.getProducts);
+
     return (
         <>
             <Box style={component}>

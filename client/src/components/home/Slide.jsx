@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
-
 import { Box, Typography, css, Button, Divider } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import Countdown from 'react-countdown';
 
 import "react-multi-carousel/lib/styles.css";
+
+import { Link } from "react-router-dom";
+
 
 const responsive = {
     // superLargeDesktop: {
@@ -79,7 +81,7 @@ const Slide = ({ products, title, showTimer }) => {
             <Box css={deal}>
                 <Typography css={dealText}>{title}</Typography>
                 {
-                    showTimer && 
+                    showTimer &&
                     <Box css={timer}>
                         <img style={{ width: 24 }} src={timerURL} alt="timer" />
                         <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
@@ -106,12 +108,14 @@ const Slide = ({ products, title, showTimer }) => {
             >
                 {
                     products.map((product, key) => (
-                        <Box key={key} style={{ textAlign: "center", padding: "25px 15px" }}>
-                            <img css={image} src={product.url} key={key} alt="product" />\
-                            <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
-                            <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
-                            <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
-                        </Box>
+                        <Link to={`product/${product.id}`} style={{textDecoration: 'none'}}>
+                            <Box key={key} style={{ textAlign: "center", padding: "25px 15px" }}>
+                                <img css={image} src={product.url} key={key} alt="product" />\
+                                <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
+                                <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
+                                <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
+                            </Box>
+                        </Link>
                     ))
                 }
             </Carousel>

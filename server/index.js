@@ -1,16 +1,16 @@
 import express from 'express';
-import Connection from './database/db.js';
-import dotenv from 'dotenv';
-import DefaultData from './default.js'
 import cors from 'cors';
+import dotenv from 'dotenv';
+
 import Router from './routes/route.js';
+import Connection from './database/db.js';
+import DefaultData from './default.js'
 
 const app = express();
-const log = console.log;
 
-dotenv.config({path: './.env'});
+dotenv.config({ path: './.env' });
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(cors());
 app.use('/', Router);
 
@@ -21,4 +21,4 @@ Connection(USERNAME, PASSWORD);
 
 DefaultData();
 
-app.listen(process.env.PORT, () => log(`server running on port: ${process.env.PORT}`));
+app.listen(process.env.PORT, () => console.log(`server running on port: ${process.env.PORT}`));
