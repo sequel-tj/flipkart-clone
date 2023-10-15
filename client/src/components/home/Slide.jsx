@@ -108,8 +108,8 @@ const Slide = ({ products, title, showTimer }) => {
             >
                 {
                     products.map((product, key) => (
-                        <Link to={`product/${product.id}`} style={{textDecoration: 'none'}}>
-                            <Box key={key} style={{ textAlign: "center", padding: "25px 15px" }}>
+                        <Link key={key} to={`product/${product.id}`} style={{textDecoration: 'none'}}>
+                            <Box style={{ textAlign: "center", padding: "25px 15px" }}>
                                 <img css={image} src={product.url} key={key} alt="product" />\
                                 <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
                                 <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>

@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import { AppBar, Toolbar, Box, Typography, css } from '@mui/material/';
+import { Link } from 'react-router-dom';
+
 import Search from './Search';
 import CustomButtons from './CustomButtons';
 
@@ -15,7 +17,9 @@ const styledHeader = {
 
 const Component = {
     marginLeft: '12%',
-    lineHeight: '0px'
+    lineHeight: '0px',
+    color: 'inherit',
+    textDecoration: 'none',
 }
 
 const subHeading = {
@@ -35,25 +39,22 @@ const CustomButtonWrapper = css`
 
 const Header = () => {
     return (
-        <AppBar style = {styledHeader}>
-            <Toolbar style={{minHeight: '55px'}}>
-                <Box style={Component}>
-                    <img src={logoURL} alt="logo img hai" style={{width:'75px'}}/>
-                    <Box style = {{display: 'flex'}}>
+        <AppBar style={styledHeader}>
+            <Toolbar style={{ minHeight: '55px' }}>
+                <Link className='yo' to='/' style={Component}>
+                    <img src={logoURL} alt="logo img hai" style={{ width: '75px' }} />
+                    <Box style={{ display: 'flex' }}>
                         <Typography style={subHeading}>
                             Explore&nbsp;
-                            <Box component="span" style = {{color: '#ffe500'}}>Plus</Box>
+                            <Box component="span" style={{ color: '#ffe500' }}>Plus</Box>
                         </Typography>
                         <img src={subURL} alt="plus-img" style={plusImg} />
                     </Box>
-                </Box>
-
+                </Link>
                 <Search />
-
                 <Box css={CustomButtonWrapper}>
                     <CustomButtons />
                 </Box>
-
             </Toolbar>
         </AppBar>
     )

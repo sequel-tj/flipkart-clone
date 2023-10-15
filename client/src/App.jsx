@@ -11,8 +11,8 @@ import DetailView from './components/details/DetailView';
 const App = () => {
   return (
     <DataProvider>
-      <Header />
       <BrowserRouter>
+      <Header />
         <Box style={{ marginTop: 55 }}>
           <Routes>
             <Route path='/' element = {<Home />} />
