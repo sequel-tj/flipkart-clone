@@ -5,7 +5,7 @@ import Slide from "./Slide";
 
 const leftComponent = css`
     width: 83%;
-    @media (max-width: 900px) {
+    @media (max-width: 1023px) {
         width: 100%;
     }
 `;
@@ -19,7 +19,7 @@ const rightComponent = css`
     display: flex;
     justify-content: center;
     align-item: center;
-    @media (max-width: 900px) {
+    @media (max-width: 1023px) {
         display: none;
     }
 `

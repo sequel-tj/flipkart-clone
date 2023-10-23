@@ -16,7 +16,7 @@ const components = css`
 
 const Navbar = () => {
     return (
-        <Box style={{ background: '#fff' }}>
+        <Box style={{ background: '#ffffff' }}>
             <Box css={components}>
                 {
                     navData.map((data, i) => {

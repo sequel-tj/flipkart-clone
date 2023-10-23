@@ -1,13 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
-import { AppBar, Toolbar, Box, Typography, css } from '@mui/material/';
+import { AppBar, Toolbar, Box, Typography, css, IconButton, Drawer, List, ListItem } from '@mui/material';
+import { Menu } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 import Search from './Search';
 import CustomButtons from './CustomButtons';
-
-const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
-const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+import { useState } from 'react';
 
 const styledHeader = {
     background: '#2874f0',
@@ -34,14 +33,59 @@ const plusImg = {
 }
 
 const CustomButtonWrapper = css`
-    margin: 0 5% 0 auto;
+margin: 0 5% 0 auto;
+@media only screen and (max-width: 900px) {
+    display: none;
+}
 `;
 
+const menuBtn = css`
+    display: none;
+    @media only screen and (max-width: 900px) {
+        display: block;
+    }
+`;
+
+
+
 const Header = () => {
+    const [open, setOpen] = useState(false);
+
+    const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+    const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const list = () => {
+        return (
+            <Box onClick={handleClose} style={{width: 200}}>
+                <List>
+                    <ListItem>
+                        <CustomButtons />
+                    </ListItem>
+                </List>
+            </Box>
+        )
+    }
+
     return (
         <AppBar style={styledHeader}>
             <Toolbar style={{ minHeight: '55px' }}>
-                <Link className='yo' to='/' style={Component}>
+                <IconButton css={menuBtn} aria-label="menu-icon" color='inherit' onClick={handleOpen}>
+                    <Menu />
+                </IconButton>
+
+                <Drawer open={open} onClose={handleClose} >
+                    {list()}
+                </Drawer>
+
+                <Link to='/' style={Component}>
                     <img src={logoURL} alt="logo img hai" style={{ width: '75px' }} />
                     <Box style={{ display: 'flex' }}>
                         <Typography style={subHeading}>

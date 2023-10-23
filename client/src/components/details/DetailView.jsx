@@ -54,7 +54,7 @@ const DetailView = () => {
                         <ActionItem product={product} />
                     </Grid>
                     <Grid css = {rightContainer} item lg={8} md={8} sm={8} xs={12}>
-                        <ProductDetail product = {product} />
+                        <ProductDetail product={product} />
                     </Grid>
                 </Grid>
             }
