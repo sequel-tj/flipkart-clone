@@ -56,14 +56,17 @@ const container = css`
 `;
 
 const loginBtn = css`
-    background: #fff;
-    color: #2874f0 !important;
-    text-transform: none;
+    background: #979797;
+    color: #ffffff !important;
+    box-shadow: none !important;
     padding: 5px 40px;
     border-radius: 2px;
-    box-shadow: none;
     font-weight: 600;
     height: 32px;
+    transition: 0.3s;
+    :hover {
+        background: #878787;
+    }
 `;
 
 const CustomButtons = () => {
@@ -91,7 +94,7 @@ const CustomButtons = () => {
                 }
 
                 <Typography style={{ marginTop: 3, width: 135, cursor: 'pointer' }}>Become a Seller</Typography>
-                <Typography style={{ marginTop: 3, cursor: 'pointer' }}>More</Typography>
+                <Typography style={{ marginTop: 3, cursor: 'pointer' }}>Dashboard</Typography>
 
                 <Link to="/cart" css={container} style={{ cursor: 'pointer' }}>
                     <Badge badgeContent={cartItems?.length} color="orange">

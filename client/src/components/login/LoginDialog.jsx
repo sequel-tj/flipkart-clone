@@ -6,15 +6,17 @@ import { authenticateLogin, authenticateSignup } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
 const components = {
-    height: '70vh',
+    height: '75vh',
     width: '90vh',
 }
 
 const image = css`
-    background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
+    background: #575757 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
+    // background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
     width: 28%;
-    height: 83.991%;
-    padding: 45px 35px;
+    height: 100%;
+    overflow-x: hidden;
+    padding: 0px 35px;
     & > p, & > h5 {
         color: #FFFFFF;
         font-weight: 600
@@ -43,10 +45,13 @@ const RequestOtp = css`
 
 const LoginBtn = css`
     text-transform: none;
-    background: #FB641B;
+    background: #FB641B !important;
     color: #fff;
     height: 48px;
     border-radius: 2px;
+    :hover {
+        background: #fb641bef !important;
+    }
 `;
 
 const Text = css`
@@ -153,8 +158,8 @@ const LoginDiaglog = ({open, setOpen}) => {
             <Box style={components}>
                 <Box style = {{display: 'flex', height: '100%'}}>
                     <Box css = {image}>
-                        <Typography variant='h5'>{account.heading}</Typography>
-                        <Typography style = {{margin: 20}}>{account.subHeading}</Typography>
+                        <Typography variant='h5' style={{margin: '40px 0'}}>{account.heading}</Typography>
+                        <Typography style = {{margin: '20px 10px'}}>{account.subHeading}</Typography>
                     </Box>
                     {
                         account.view === 'login' ?

@@ -126,3 +126,14 @@ export const products = [
         tagline: 'Grab Now!' 
     }
 ];
+
+
+export const orders = [
+    {
+        email: "",
+        title: "",
+        price: "",
+        quantity: "",
+        description: "",
+    }
+]

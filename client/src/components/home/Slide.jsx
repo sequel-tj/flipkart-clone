@@ -87,7 +87,7 @@ const Slide = ({ products, title, showTimer }) => {
                         <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
                     </Box>
                 }
-                <Button color="primary" variant="contained" css={viewAllBtn}>View All</Button>
+                {/* <Button color="primary" variant="contained" css={viewAllBtn}>View All</Button> */}
             </Box>
 
             <Divider />

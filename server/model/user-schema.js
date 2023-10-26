@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String, 
         required: true
+    },
+    Date : {
+        type: Date,
+        default: Date.now() + 1.98e+7
     }
 });
 

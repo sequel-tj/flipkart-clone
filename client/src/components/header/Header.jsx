@@ -9,13 +9,15 @@ import CustomButtons from './CustomButtons';
 import { useState } from 'react';
 
 const styledHeader = {
-    background: '#2874f0',
+    background: '#575757',
+    // background: '#2874f0',
     height: '55px',
     boxShadow: 'none'
 };
 
 const Component = {
-    marginLeft: '12%',
+    marginLeft: '10%',
+    marginRight: '10px',
     lineHeight: '0px',
     color: 'inherit',
     textDecoration: 'none',
