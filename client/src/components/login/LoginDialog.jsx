@@ -168,7 +168,7 @@ const LoginDiaglog = ({open, setOpen}) => {
 
                             {error && <Typography css={wrongCred}>Please enter valid username/password.</Typography>}
 
-                            <TextField variant='standard' onChange={onValueChange} name='password' label="Enter Password"/>
+                            <TextField variant='standard' type='password' onChange={onValueChange} name='password' label="Enter Password"/>
                             <Typography css={Text}> By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Typography>
                             <Button css = {LoginBtn} onClick={loginUser}>Login</Button>
                             <Typography style = {{textAlign: 'center'}}>OR</Typography>
@@ -181,7 +181,7 @@ const LoginDiaglog = ({open, setOpen}) => {
                             <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='lastname' label="Enter Lastname"/>
                             <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='username' label="Enter username"/>
                             <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='email' label="Enter email"/>
-                            <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='password' label="Enter Password"/>
+                            <TextField variant='standard' type='password' onChange={(e) => {onInputChange(e)}} name='password' label="Enter Password"/>
                             <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='phone' label="Enter Phone"/>
 
                             <Button css = {LoginBtn} onClick={signupUser}>Continue</Button>

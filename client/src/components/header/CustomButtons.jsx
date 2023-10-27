@@ -94,7 +94,7 @@ const CustomButtons = () => {
                 }
 
                 <Typography style={{ marginTop: 3, width: 135, cursor: 'pointer' }}>Become a Seller</Typography>
-                <Typography style={{ marginTop: 3, cursor: 'pointer' }}>Dashboard</Typography>
+                <Typography style={{ marginTop: 3, cursor: 'pointer' }}>More</Typography>
 
                 <Link to="/cart" css={container} style={{ cursor: 'pointer' }}>
                     <Badge badgeContent={cartItems?.length} color="orange">

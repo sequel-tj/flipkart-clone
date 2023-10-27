@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import DataProvider from './context/DataProvider';
 import DetailView from './components/details/DetailView';
 import Cart from './components/cart/Cart';
+import Dashboard from './components/dashboard/Dashboard';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/product/:id' element={<DetailView />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </Box>
       </BrowserRouter>

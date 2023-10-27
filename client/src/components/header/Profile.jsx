@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Box, Menu, MenuItem, Typography, css } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Link } from "react-router-dom";
 
 const component = css`
     margin-top: 5px;
@@ -12,18 +13,18 @@ const logoutBtn = css`
     margin-left: 20px;
 `;
 
- 
-const Profile = ({account, setAccount}) => {
+
+const Profile = ({ account, setAccount }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
 
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
 
     const logoutUser = () => {
@@ -32,21 +33,23 @@ const Profile = ({account, setAccount}) => {
 
     return (
         <>
-            <Box onClick={handleClick}><Typography style={{marginTop: 2, cursor: 'pointer'}}>{account}</Typography></Box>
+            <Box onClick={handleClick}><Typography style={{ marginTop: 2, cursor: 'pointer' }}>{account}</Typography></Box>
             <Menu
                 anchorEl={anchorEl}
-                open = {open}
+                open={open}
                 onClose={handleClose}
                 onClick={handleClose}
-                css = {component}
+                css={component}
             >
 
                 <MenuItem onClick={handleClose}>
-                    <Typography>My Acount</Typography>
+                    <Link to="/dashboard" style={{textDecoration: 'none', textTransform: 'none', color: '#000'}}>
+                        <Typography>Dashboard</Typography>
+                    </Link>
                 </MenuItem>
 
-                <MenuItem onClick={() => {handleClose(); logoutUser();}}>
-                    <PowerSettingsNewIcon color="primary" fontSize="small"/>
+                <MenuItem onClick={() => { handleClose(); logoutUser(); }}>
+                    <PowerSettingsNewIcon color="primary" fontSize="small" />
                     <Typography css={logoutBtn}>Logout</Typography>
                 </MenuItem>
             </Menu>

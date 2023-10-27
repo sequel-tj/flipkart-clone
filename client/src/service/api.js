@@ -8,6 +8,7 @@ export const authenticateSignup = async (data) => {
     } 
     catch (error) {
         console.log("error while calling the signup api:", error);
+        return error.response;
     }
 }
 

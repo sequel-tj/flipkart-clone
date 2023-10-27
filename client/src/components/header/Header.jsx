@@ -16,7 +16,7 @@ const styledHeader = {
 };
 
 const Component = {
-    marginLeft: '10%',
+    marginLeft: '12%',
     marginRight: '10px',
     lineHeight: '0px',
     color: 'inherit',
