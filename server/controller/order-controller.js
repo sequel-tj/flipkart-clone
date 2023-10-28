@@ -4,7 +4,7 @@ import OrderId from "../model/orderId-schema.js";
 
 export const getOrderIds = async (req, res) => {
 
-    const username = "tanmay";
+    const username = req.params.username;
 
     try {
         let orderIds = await OrderId
@@ -24,13 +24,13 @@ export const getOrderIds = async (req, res) => {
 }
 
 export const getOrders = async (req, res) => {
-
-    const timestamp = req.params.orderId;
+    const username = req.params.username;
+    const timestamp = req.params.oid;
 
     try {
         let orders = await Orders
             .find({ "timestamp": timestamp })
-            .select({ "productId": 1, "quantity": 1 })
+            .select({ "productId": 1, "quantity": 1, "_id": 0 })
             .sort({ productId: 1 });
 
         res.status(200).json(orders);

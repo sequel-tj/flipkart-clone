@@ -128,38 +128,129 @@ export const products = [
 ];
 
 
-
 export const orderIds = [
     {
-        orderId: '2023-10-26T20:46:34.584+00:00',
+        orderId: '2023-10-27T20:46:34.584+00:00',
         username: "tanmay",
     },
     {
-        orderId: '2023-09-26T20:46:34.584+00:00',
+        orderId: '2023-09-27T20:46:34.584+00:00',
         username: "tanmay",
-    }
+    },
+    {
+        orderId: '2023-08-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-07-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-06-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-05-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-04-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-03-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-02-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
+    {
+        orderId: '2023-01-27T20:46:34.584+00:00',
+        username: "tanmay",
+    },
 ]
 
 
 export const orders = [
     {
-        timestamp: '2023-10-26T20:46:34.584+00:00',
+        timestamp: '2023-10-27T20:46:34.584+00:00',
         productId: "product1",
         quantity: "1",
     },
     {
-        timestamp: '2023-09-26T20:46:34.584+00:00',
+        timestamp: '2023-09-27T20:46:34.584+00:00',
         productId: "product4",
         quantity: "1",
     },
     {
-        timestamp: '2023-09-26T20:46:34.584+00:00',
+        timestamp: '2023-09-27T20:46:34.584+00:00',
         productId: "product2",
         quantity: "1",
     },
     {
-        timestamp: '2023-09-26T20:46:34.584+00:00',
+        timestamp: '2023-09-27T20:46:34.584+00:00',
         productId: "product6",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-01-27T20:46:34.584+00:00',
+        productId: "product1",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-02-27T20:46:34.584+00:00',
+        productId: "product2",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-03-27T20:46:34.584+00:00',
+        productId: "product3",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-04-27T20:46:34.584+00:00',
+        productId: "product7",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-05-27T20:46:34.584+00:00',
+        productId: "product5",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-06-27T20:46:34.584+00:00',
+        productId: "product7",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-07-27T20:46:34.584+00:00',
+        productId: "product2",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-07-27T20:46:34.584+00:00',
+        productId: "product6",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-08-27T20:46:34.584+00:00',
+        productId: "product1",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-02-27T20:46:34.584+00:00',
+        productId: "product2",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-03-27T20:46:34.584+00:00',
+        productId: "product3",
+        quantity: "1",
+    },
+    {
+        timestamp: '2023-04-27T20:46:34.584+00:00',
+        productId: "product7",
         quantity: "1",
     },
 ]

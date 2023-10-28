@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Box, Menu, MenuItem, Typography, css } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const component = css`
     margin-top: 5px;
@@ -18,6 +18,7 @@ const Profile = ({ account, setAccount }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -29,7 +30,8 @@ const Profile = ({ account, setAccount }) => {
 
     const logoutUser = () => {
         setAccount('');
-    }
+        navigate('/');
+    }   
 
     return (
         <>

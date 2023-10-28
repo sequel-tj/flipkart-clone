@@ -2,14 +2,15 @@ import { Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
-const data = [
-    { name: "Kitchenware", value: 4 },
-    { name: "Smartphone", value: 1 },
-    { name: "Clothing", value: 2 },
-    { name: "Appliances", value: 1 }
-];
+// const data = [
+//     { name: "Kitchenware", value: 4 },
+//     { name: "Smartphone", value: 1 },
+//     { name: "Clothing", value: 2 },
+//     { name: "Appliances", value: 1 }
+// ];
 
 const renderActiveShape = (props) => {
+
     const RADIAN = Math.PI / 180;
     const {
         cx,
@@ -36,7 +37,7 @@ const renderActiveShape = (props) => {
     const textAnchor = cos >= 0 ? "start" : "end";
 
     return (
-        <g style={{userSelect: "none"}}>
+        <g style={{ userSelect: "none" }}>
             <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
                 {payload.name}
             </text>
@@ -84,14 +85,18 @@ const renderActiveShape = (props) => {
 };
 
 
-export default function PieChartCustomAcitve() {
+const PieChartCustomAcitve = ({ categories }) => {
+
+    const data = [];
+
+    for (const category in categories) {
+        data.push({name: category, value: categories[category]});
+    }
+
     const [activeIndex, setActiveIndex] = useState(0);
-    const onPieEnter = useCallback(
-        (_, index) => {
-            setActiveIndex(index);
-        },
-        [setActiveIndex]
-    );
+    const onPieEnter = useCallback((_, index) => {
+        setActiveIndex(index);
+    }, [setActiveIndex]);
 
     return (
         <PieChart width={600} height={340}>
@@ -99,10 +104,10 @@ export default function PieChartCustomAcitve() {
                 activeIndex={activeIndex}
                 activeShape={renderActiveShape}
                 data={data}
-                cx={270}
-                cy={160}
-                innerRadius={70}
-                outerRadius={110}
+                cx={280}
+                cy={170}
+                innerRadius={100}
+                outerRadius={120}
                 fill="#8884d8"
                 dataKey="value"
                 onMouseEnter={onPieEnter}
@@ -110,3 +115,6 @@ export default function PieChartCustomAcitve() {
         </PieChart>
     );
 }
+
+
+export default PieChartCustomAcitve;

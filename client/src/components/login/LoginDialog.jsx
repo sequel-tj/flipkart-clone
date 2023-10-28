@@ -138,7 +138,7 @@ const LoginDiaglog = ({open, setOpen}) => {
         let response = await authenticateSignup(signup);
         if (!response) return;
         handleClose();
-        setAccount(signup.firstname);
+        setAccount(signup.username);
     }
 
     const loginUser = async () => {
@@ -146,7 +146,7 @@ const LoginDiaglog = ({open, setOpen}) => {
         // console.log(response);
         if (response.status === 200) {
             handleClose();
-            setAccount(response.data.userData.firstname);
+            setAccount(response.data.userData.username);
         }
         else {
             setError(true);
