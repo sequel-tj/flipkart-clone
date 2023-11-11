@@ -47,3 +47,13 @@ export const getOrderHistory = async(username) => {
         return {error, status: 500};
     }
 }
+
+
+export const payUsingPaytm = async (data) => {
+    try {
+        let response = await axios.post(`${URL}/payment`, data);
+        return response.data;
+    } catch (error) {
+        console.log("error while calling payment api: ", error );
+    }
+}

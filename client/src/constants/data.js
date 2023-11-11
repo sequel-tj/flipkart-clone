@@ -1,3 +1,16 @@
+export const imageURL = [
+    'https://rukminim1.flixcart.com/flap/960/960/image/2f30db9425df5cec.jpg?q=50',
+    'https://rukminim1.flixcart.com/flap/960/960/image/084789479074d2b2.jpg',
+    'https://rukminim1.flixcart.com/flap/960/960/image/1ce0c4c1fb501b45.jpg?q=50'
+];
+
+export const bannerData = [
+    { id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50' },
+    { id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50' },
+    { id: 2, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50' },
+    { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },
+]
+
 export const navData = [
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100', text: 'Grocery' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100', text: 'Mobile' },
@@ -9,64 +22,3 @@ export const navData = [
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100', text: 'Beauty, Toys & More' },
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100', text: 'Top Offers' },
 ];
-
-export const bannerData = [
-    { id: 4, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50' },
-    { id: 3, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/ae9966569097a8b7.jpg?q=50' },
-    { id: 2, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/57267a180af306fe.jpg?q=50' },
-    { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },
-]
-
-export const imageURL = [
-    'https://rukminim1.flixcart.com/flap/960/960/image/2f30db9425df5cec.jpg?q=50',
-    'https://rukminim1.flixcart.com/flap/960/960/image/084789479074d2b2.jpg',
-    'https://rukminim1.flixcart.com/flap/960/960/image/1ce0c4c1fb501b45.jpg?q=50'
-];
-
-
-/*
-
-
-    
-
-
-function isDate(val) {
-    // Cross realm comptatible
-    return Object.prototype.toString.call(val) === '[object Date]'
-}
-
-function isObj(val) {
-    return typeof val === 'object'
-}
-
-function stringifyValue(val) {
-    if (isObj(val) && !isDate(val)) {
-        return JSON.stringify(val)
-    } else {
-        return val
-    }
-}
-
-function buildForm({ action, params }) {
-    const form = document.createElement('form')
-    form.setAttribute('method', 'post')
-    form.setAttribute('action', action)
-
-    Object.keys(params).forEach(key => {
-        const input = document.createElement('input')
-        input.setAttribute('type', 'hidden')
-        input.setAttribute('name', key)
-        input.setAttribute('value', stringifyValue(params[key]))
-        form.appendChild(input)
-    })
-
-    return form
-}
-
-export function post(details) {
-    const form = buildForm(details)
-    document.body.appendChild(form)
-    form.submit()
-    form.remove()
-}
-*/

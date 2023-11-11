@@ -11,7 +11,7 @@ const DefaultData = async () => {
         // await OrderId.insertMany(orderIds);
         // await Orders.deleteMany();
         // await Orders.insertMany(orders);
-        console.log('Data inserted successfully');
+        // console.log('Data inserted successfully');
     }
     catch(err) {
         console.log(`Error while inserting default data ${err}`)
