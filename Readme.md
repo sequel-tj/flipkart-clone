@@ -32,13 +32,13 @@
   </div>
 </div>
 
-GUIDE
-------------------
 
--> add '.env' file in server directory with following data:
-
-PORT = 
-
-DB_USER = 
-
-DB_PASSWORD = 
+<h2>GUIDE</h2>
+<ul>
+  <li>create '.env' file in server directory with following data:</li>
+  <ul>
+    <li><h6>PORT = </h6></li>
+    <li><h6>DB_USER = </h6></li>
+    <li><h6>DB_PASSWORD = </h6></li>
+  </ul>
+</ul>
