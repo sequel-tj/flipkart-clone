@@ -9,14 +9,14 @@ export const getOrderIds = async (req, res) => {
     try {
         let orderIds = await OrderId
             .find({ "username": username })
-            .sort({ orderId: 1 })
-            .select({ 'orderId': 1, '_id': 0 });
+            .sort({ 'date': 1 })
+            .select({ 'date': 1, '_id': 1 });
 
-        let orders = orderIds.map((order) => {
-            return order.orderId;
-        })
+        // let orders = orderIds.map((order) => {
+        //     return order._id;
+        // })
 
-        res.status(200).json(orders);
+        res.status(200).json(orderIds);
     }
     catch (error) {
         res.status(500).json({ error });
@@ -25,13 +25,13 @@ export const getOrderIds = async (req, res) => {
 
 export const getOrders = async (req, res) => {
     const username = req.params.username;
-    const timestamp = req.params.oid;
+    const orderid = req.params.oid;
 
     try {
         let orders = await Orders
-            .find({ "timestamp": timestamp })
-            .select({ "productId": 1, "quantity": 1, "_id": 0 })
-            .sort({ productId: 1 });
+            .find({ "order_id": orderid })
+            .select({ "product_id": 1, "quantity": 1, "_id": 0 })
+            .sort({ product_id: 1 });
 
         res.status(200).json(orders);
     }

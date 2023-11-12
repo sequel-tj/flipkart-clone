@@ -177,13 +177,13 @@ const Dashboard = () => {
                     const timestamp = item.timestamp;
 
                     for (let i = 0; i < orders.length; i++) {
-                        const { productId, quantity } = orders[i];
-                        const { price, title } = products.filter(product => product.id === productId)[0];
+                        const { product_id, quantity } = orders[i];
+                        const { price, title } = products.filter(product => product.id === product_id)[0];
 
                         // console.log(price);
                         mrp += (price.mrp * quantity);
-                        cost += price.cost;
-                        discount += (price.mrp - price.cost);
+                        cost += (price.cost * quantity);
+                        discount += ((price.mrp - price.cost) * quantity);
 
                         catArray.push(title.shortTitle);
                     }

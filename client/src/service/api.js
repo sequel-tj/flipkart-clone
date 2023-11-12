@@ -42,14 +42,14 @@ export const getOrderHistory = async (username) => {
 
         if (status !== 200) return data;
 
-        let orderhistory = await Promise.all(data.map(async (timestamp) => {
+        let orderhistory = await Promise.all(data.map(async (orderids) => {
             try {
-                const orders = await axios.get(`${URL}/${username}/orders/${timestamp}`);
-                return { "timestamp": timestamp, "data": orders.data, "status": 200 }
+                const orders = await axios.get(`${URL}/${username}/orders/${orderids._id}`);
+                return { "timestamp": orderids.date, "data": orders.data, "status": 200 }
             }
             catch (error) {
                 console.log(error);
-                return { "timestamp": timestamp, "data": error, "status": 200 }
+                return { "timestamp": orderids.date, "data": error, "status": 500 }
             }
         }))
 

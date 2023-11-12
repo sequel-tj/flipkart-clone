@@ -18,7 +18,7 @@ router.get('/products/:id', getProductById);
 router.post('/placeOrder', placeOrder);
 
 router.get('/:username/orders', getOrderIds);
-router.get('/:username/orders/:oid', getOrders);
+router.get('/:username/orders/:oid/', getOrders);
 
 router.post('/checkout', checkout);
 router.post('/paymentverification', paymentVerification);
