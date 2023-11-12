@@ -25,3 +25,12 @@ export const removeFromCart = (id) => async (dispatch) => {
         dispatch({ type: actionType.REMOVE_FROM_CART_ERROR, payload: error.message });
     }
 }
+
+export const resetCart = () => async(dispatch) => {
+    try {
+        dispatch({ type: actionType.CART_RESET});
+    }
+    catch (error) {
+        dispatch({ type: actionType.CART_RESET, payload: error.message });
+    }
+}

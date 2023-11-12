@@ -2,11 +2,8 @@ import mongoose from "mongoose";
 
 
 const orderHistory = new mongoose.Schema({
-    timestamp: {
-        type: Date,
-        default: Date.now() + 1.98e+7
-    },
-    productId: String,
+    order_id: String,
+    product_id: String,
     quantity: String,
 })
 

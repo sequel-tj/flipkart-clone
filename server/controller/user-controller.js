@@ -30,10 +30,26 @@ export const userLogin = async(req, res) => {
         const exists = await User.findOne({username: username, password: password});
         
         if (exists) {
-            return res.status(200).json({userData: exists, message: 'Login successful.'});
+            return res.status(200).json({user: exists, message: 'Login successful.'});
         }
 
         res.status(401).json({message: 'Invalid login credentials.'});
+    }
+    catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}
+
+export const findUser = async(req, res) => {
+    try {
+        const username = req.params.username;
+        const exists = await User.findOne({username: username});
+        
+        if (exists) {
+            return res.status(200).json({user: exists, message: 'user found'});
+        }
+
+        res.status(401).json({message: 'user not exits'});
     }
     catch (error) {
         res.status(500).json({message: error.message});

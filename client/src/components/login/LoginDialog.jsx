@@ -142,11 +142,12 @@ const LoginDiaglog = ({open, setOpen}) => {
     }
 
     const loginUser = async () => {
-        let response = await authenticateLogin(login);
-        // console.log(response);
-        if (response.status === 200) {
+        const {status, data: {user}} = await authenticateLogin(login);
+        // console.log(user);
+        
+        if (status === 200) {
             handleClose();
-            setAccount(response.data.userData.username);
+            setAccount(user.username);
         }
         else {
             setError(true);

@@ -71,8 +71,8 @@ const loginBtn = css`
 
 const CustomButtons = () => {
 
-    const [open, setOpen] = useState(false);
-    const { account, setAccount } = useContext(DataContext);
+    // const [open, setOpen] = useState(false);
+    const { account, setAccount, open, setOpen } = useContext(DataContext);
     const { cartItems } = useSelector(state => state.cart);
     // const navigate = useNavigate();
 

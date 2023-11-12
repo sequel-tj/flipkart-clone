@@ -16,6 +16,11 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
             return { ...state, cartItems: state.cartItems.filter(product => product.id !== action.payload) }
 
         case actionType.REMOVE_FROM_CART_ERROR: return action.payload;
+
+        case actionType.CART_RESET: return { cartItems: [] };
+
+        case actionType.CART_RESET_ERROR: return action.payload;
+
         default: return state;
     }
 }

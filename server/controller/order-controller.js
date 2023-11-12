@@ -39,3 +39,43 @@ export const getOrders = async (req, res) => {
         res.status(500).json({ error });
     }
 }
+
+export const placeOrder = async (req, res) => {
+    try {
+        const { orderid, paymentid, username, cartItems } = req.body;
+        const date = new Date(Date.now());
+        // const date = new Date();
+        // const dd = date.getDate();
+        // const mm = date.getMonth() + 1;
+        // const yyyy = date.getFullYear();
+
+        // create order
+        const order = new OrderId({
+            _id: orderid,
+            payment_id: paymentid,
+            username: username,
+            date: date,
+        });
+
+        await order.save();
+
+        // insert cartItems
+        cartItems.map(async (item) => {
+            const { id, quantity } = item;
+            const orderItem = new Orders({
+                order_id: orderid,
+                product_id: id,
+                quantity: quantity,
+            });
+
+            await orderItem.save();
+        })
+
+        res.status(200).json({
+            message: "order placed successfully",
+        })
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

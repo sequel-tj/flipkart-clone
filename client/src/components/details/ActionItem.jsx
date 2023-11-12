@@ -1,16 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 
 import { Box, Button, css } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { addToCart } from '../../redux/actions/cartActions';
-import { payUsingPaytm } from '../../service/api'
-import { post } from '../../utils/common-utils';
+import { checkout, getKey, initPayment } from '../../service/api'
+import { DataContext } from '../../context/DataProvider';
+import tjlogo from '../../img/tj.png';
+
 
 
 const leftContainer = css`
@@ -24,7 +27,7 @@ const leftContainer = css`
 const image = css`
     width: 90%;
     padding: 15px
-`;
+    `;
 
 const btn = css`
     width: 48%;
@@ -36,7 +39,7 @@ const btn = css`
     @media (max-width: 600px) {
         width: 48%;
     }
-`;
+    `;
 
 
 const ActionItem = ({ product }) => {
@@ -45,24 +48,31 @@ const ActionItem = ({ product }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { account, setOpen } = useContext(DataContext);
 
     const { id } = product;
+
 
     const addItemToCart = () => {
         dispatch(addToCart(id, quantity));
         navigate('/cart');
     }
 
-    const buyNow = () => {
-        console.log("hel")
-        let response = payUsingPaytm({ email: 'helloworld@gogo.com', amount: 200 });
-        let information = {
-            params: response,
-            action: 'https://securegw-stage.paytm.in/order/process'
+    const handlePayment = async () => {
+        if (!account) {
+            setOpen(true);
+            return;
         }
 
-        post(information);
+        try {
+            const { data } = await checkout(product.price.cost);
+            initPayment(data.orderRes, account);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
+
 
     return (
         <Box css={leftContainer}>
@@ -70,7 +80,7 @@ const ActionItem = ({ product }) => {
                 <img css={image} src={product.detailUrl} alt="product-img" />
             </Box>
             <Button onClick={addItemToCart} css={btn} variant="contained" style={{ marginRight: 10, background: '#ff9f00' }}><ShoppingCartIcon />Add to Cart</Button>
-            <Button css={btn} onClick={buyNow} variant="contained" style={{ background: '#fb541b' }}><FlashOnIcon />Buy Now</Button>
+            <Button css={btn} onClick={handlePayment} variant="contained" style={{ background: '#fb541b' }}><FlashOnIcon />Buy Now</Button>
         </Box>
     )
 }

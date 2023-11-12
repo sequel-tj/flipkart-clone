@@ -6,3 +6,4 @@ export const ADD_TO_CART_ERROR = 'addToCartError';
 export const REMOVE_FROM_CART = 'removeFromCart';
 export const REMOVE_FROM_CART_ERROR = 'removeFromCartError';
 export const CART_RESET = 'cartReset';
+export const CART_RESET_ERROR = 'cartResetError';
