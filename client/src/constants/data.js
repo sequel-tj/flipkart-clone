@@ -6,11 +6,14 @@ export const imageURL = [
 ];
 
 export const bannerData = [
+    { id: 6, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/785781fd1237d832.jpeg' },
+    { id: 7, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/ab11f518b2101663.jpeg' },
     { id: 4, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/beff801f5425a797.jpg' },
     { id: 3, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/87b6f22b60c3b012.jpg' },
     { id: 2, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/e9c37c2cf2570f1a.jpg' },
     { id: 5, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/809ad9b9427f6bb4.jpg' },
-    { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg' },
+    { id: 8, url: 'https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/d5a2a6481656bb58.jpeg' },
+    // { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg' },
 ]
 
 export const navData = [

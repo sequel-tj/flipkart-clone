@@ -1,4 +1,6 @@
-import { Typography } from "@mui/material";
+/** @jsxImportSource @emotion/react */
+
+import { css, Box, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
@@ -84,13 +86,24 @@ const renderActiveShape = (props) => {
     );
 };
 
+const pieWrapper = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #f0f5ff;
+    height: 380px;
+    margin: 0 0 10px 0;
+    // width: 94%;
+`
+
 
 const PieChartCustomAcitve = ({ categories }) => {
 
     const data = [];
 
     for (const category in categories) {
-        data.push({name: category, value: categories[category]});
+        data.push({ name: category, value: categories[category] });
     }
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -98,21 +111,35 @@ const PieChartCustomAcitve = ({ categories }) => {
         setActiveIndex(index);
     }, [setActiveIndex]);
 
+
+    // console.log(data)
+
+
     return (
-        <PieChart width={600} height={340}>
-            <Pie
-                activeIndex={activeIndex}
-                activeShape={renderActiveShape}
-                data={data}
-                cx={280}
-                cy={170}
-                innerRadius={100}
-                outerRadius={120}
-                fill="#8884d8"
-                dataKey="value"
-                onMouseEnter={onPieEnter}
-            />
-        </PieChart>
+        <>
+            {
+                data.length > 0 ?
+                <PieChart width={600} height={340}>
+                    <Pie
+                        activeIndex={activeIndex}
+                        activeShape={renderActiveShape}
+                        data={data}
+                        cx={280}
+                        cy={170}
+                        innerRadius={100}
+                        outerRadius={120}
+                        fill="#8884d8"
+                        dataKey="value"
+                        onMouseEnter={onPieEnter}
+                    />
+                </PieChart>
+                :
+                <Box css={pieWrapper}>
+                    <Typography>Pie Chart not available.</Typography>
+                    <Typography>Your order history is empty :(</Typography>
+                </Box>
+            }
+        </>
     );
 }
 

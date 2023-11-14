@@ -86,30 +86,35 @@ import {
 // ];
 
 const MixBarChart = ({ barGraphData }) => {
-
+    // console.log(barGraphData);
+    
     return (
-        <BarChart
-            width={750}
-            height={400}
-            data={barGraphData}
-            margin={{
-                top: 20,
-                right: 10,
-                left: 0,
-                // bottom: 5
-            }}
-        >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="Cost" stackId="a" fill="rgb(255, 85, 85)" />
-            <Bar dataKey="Discount" stackId="a" fill="rgb(56, 218, 115)" />
-            <Bar dataKey="MRP" fill="#8884d8" />
-            {/* <Bar dataKey="MRP" fill="rgb(93, 109, 126)" /> */}
+        <>
+            {
+                    <BarChart
+                        width={750}
+                        height={400}
+                        data={barGraphData}
+                        margin={{
+                            top: 20,
+                            right: 10,
+                            left: 0,
+                            // bottom: 5
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="Cost" stackId="a" fill="rgb(255, 85, 85)" />
+                        <Bar dataKey="Discount" stackId="a" fill="rgb(56, 218, 115)" />
+                        <Bar dataKey="MRP" fill="#8884d8" />
+                        {/* <Bar dataKey="MRP" fill="rgb(93, 109, 126)" /> */}
 
-        </BarChart>
+                    </BarChart>
+            }
+        </>
     );
 }
 

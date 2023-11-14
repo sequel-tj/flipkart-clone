@@ -61,83 +61,84 @@ const gradientYellow = css`
     background: linear-gradient(158deg, rgba(255, 191, 0, 1) 0%, rgba(241, 196, 15, 1) 100%);
 `
 
-let graphData = [
-    {
-        name: "Jan",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Feb",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Mar",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Apr",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "May",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Jun",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Jul",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Aug",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Sep",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Oct",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Nov",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-    {
-        name: "Dec",
-        MRP: 0,
-        Cost: 0,
-        Discount: 0
-    },
-];
+
 
 
 const Dashboard = () => {
+    let graphData = [
+        {
+            name: "Jan",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Feb",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Mar",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Apr",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "May",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Jun",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Jul",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Aug",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Sep",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Oct",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Nov",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+        {
+            name: "Dec",
+            MRP: 0,
+            Cost: 0,
+            Discount: 0
+        },
+    ];
 
     let { products } = useSelector(state => state.getProducts);
 
@@ -156,7 +157,7 @@ const Dashboard = () => {
     const orderAPI = async () => {
         try {
             let { data, status } = await getOrderHistory(username);
-            console.log(data);
+            // console.log(data);
 
             if (status === 200) {
 
@@ -247,7 +248,7 @@ const Dashboard = () => {
                                 <Grid item xs={12} sm={12} md={6} lg={6} css={gridItem}>
                                     <Stack spacing={3} direction={"row"}>
                                         <Card sx={{ width: '100%', height: '150px' }} css={gradientRed}>
-                                            <CardContent>
+                                            <CardContent style = {{padding: '16px'}}>
                                                 <CreditCardIcon sx={{ color: '#fff' }} />
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
                                                     ₹ {monthlyExp.toFixed(2)}
@@ -259,7 +260,7 @@ const Dashboard = () => {
                                             </CardContent>
                                         </Card>
                                         <Card sx={{ width: '100%', height: '150px' }} css={gradientYellow}>
-                                            <CardContent>
+                                            <CardContent style = {{padding: '16px'}}>
                                                 <ShoppingBagIcon sx={{ color: '#fff' }} />
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
                                                     ₹ {monthlySavings.toFixed(2)}
@@ -275,7 +276,7 @@ const Dashboard = () => {
                                 <Grid item xs={12} sm={12} md={6} lg={6} css={gridItem}>
                                     <Stack spacing={3} direction={"row"}>
                                         <Card sx={{ width: '100%', height: '150px' }} css={gradientBlue}>
-                                            <CardContent>
+                                            <CardContent style = {{padding: '16px'}}>
                                                 <StoreIcon fontSize="medium" sx={{ color: "#fff" }} />
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
                                                     ₹ {totalExp.toFixed(2)}
@@ -287,7 +288,7 @@ const Dashboard = () => {
                                             </CardContent>
                                         </Card>
                                         <Card sx={{ width: '100%', height: '150px' }} css={gradientLime}>
-                                            <CardContent>
+                                            <CardContent style = {{padding: '16px'}}>
                                                 <SavingsIcon sx={{ color: '#fff' }} />
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: '#fff' }}>
                                                     ₹ {totalSavings.toFixed(2)}
@@ -306,19 +307,15 @@ const Dashboard = () => {
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={12} md={6} lg={7} css={gridItem}>
                                     <Card sx={{ width: '100%', height: '60vh' }}>
-                                        <CardContent>
-                                            {
-                                                barData && barData.length > 0 ?
-                                                <MixBarChart barGraphData={barData} />
-                                                :
-                                                <MixBarChart barGraphData={[]} />
-                                            }
+                                        <CardContent style = {{padding: '16px'}}>
+                                            <MixBarChart barGraphData={barData} />
                                         </CardContent>
                                     </Card>
                                 </Grid>
+                                
                                 <Grid item xs={12} sm={12} md={6} lg={5} css={gridItem}>
-                                    <Card sx={{ maxWidth: '100%', height: '60vh' }}>
-                                        <CardContent style={{ textAlign: 'center', width: '100%' }}>
+                                    <Card sx={{ width: '100%', height: '60vh' }}>
+                                        <CardContent style={{ textAlign: 'center', width: '100%', padding: '0' }}>
                                             {
                                                 Object.keys(category).length > 0 ?
                                                 <PieChartCustomAcitve categories={category} />
