@@ -1,16 +1,14 @@
 import { products, orders, orderIds } from "./constants/data.js";
 import Product from "./model/product-schema.js";
-import Orders from "./model/order-list-schema.js";
-import OrderId from "./model/orderId-schema.js";
+import Orders from "./model/order-schema.js";
+import Payments from "./model/payment-schema.js"
 
 const DefaultData = async () => {
     try {
-        // await Product.deleteMany();
+        await Orders.deleteMany();
+        await Payments.deleteMany();
         // await Product.insertMany(products);
-        // await OrderId.deleteMany();
-        // await OrderId.insertMany(orderIds);
-        // await Orders.deleteMany();
-        // await Orders.insertMany(orders);
+
         // console.log('Data inserted successfully');
     }
     catch(err) {

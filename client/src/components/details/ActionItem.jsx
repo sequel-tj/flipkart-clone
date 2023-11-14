@@ -9,10 +9,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { addToCart } from '../../redux/actions/cartActions';
-import { checkout, getKey, initPayment } from '../../service/api'
+import { addToCart, resetCart } from '../../redux/actions/cartActions';
+import { checkout, getKey, initPayment, placeOrder } from '../../service/api'
 import { DataContext } from '../../context/DataProvider';
-import tjlogo from '../../img/tj.png';
+// import tjlogo from '../../img/tj.png';
 
 
 
@@ -44,7 +44,7 @@ const btn = css`
 
 const ActionItem = ({ product }) => {
 
-    const [quantity, setQuantity] = useState(1);
+    const quantity = useState(1)[0];
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -65,8 +65,32 @@ const ActionItem = ({ product }) => {
         }
 
         try {
-            const { data } = await checkout(product.price.cost);
-            initPayment(data.orderRes, account);
+            const { orderRes } = await checkout(product.price.cost + 40);
+            const { success, data, message } = await initPayment(orderRes, account, [product]);
+            // console.log(paymentResponse);
+
+            const { razorpay_order_id, razorpay_payment_id } = data;
+
+            if (success) {
+                const result = await placeOrder(razorpay_order_id, razorpay_payment_id, account, [product]);
+                
+                if (result.status === 200) {
+                    // empty cart
+                    console.log('resetting cart...');
+                    dispatch(resetCart());
+                    
+                    console.log(result.data);
+                    
+                    // redirect to homepage
+                    console.log('redirecting to homepage..');
+                    navigate(`/paymentsuccess?pid=${razorpay_payment_id}&oid=${razorpay_order_id}`);
+                }
+                else {
+                    console.log(result);
+                }
+            } else {
+                console.log(message);
+            }
         }
         catch (error) {
             console.log(error);

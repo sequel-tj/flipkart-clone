@@ -1,5 +1,5 @@
-import Orders from "../model/order-list-schema.js";
-import OrderId from "../model/orderId-schema.js";
+import Orders from "../model/order-schema.js";
+import Payments from "../model/payment-schema.js";
 
 
 export const getOrderIds = async (req, res) => {
@@ -7,7 +7,7 @@ export const getOrderIds = async (req, res) => {
     const username = req.params.username;
 
     try {
-        let orderIds = await OrderId
+        let orderIds = await Payments
             .find({ "username": username })
             .sort({ 'date': 1 })
             .select({ 'date': 1, '_id': 1 });
@@ -24,7 +24,7 @@ export const getOrderIds = async (req, res) => {
 }
 
 export const getOrders = async (req, res) => {
-    const username = req.params.username;
+    // const username = req.params.username;
     const orderid = req.params.oid;
 
     try {
@@ -42,6 +42,7 @@ export const getOrders = async (req, res) => {
 
 export const placeOrder = async (req, res) => {
     try {
+        console.log('\norder controller');
         const { orderid, paymentid, username, cartItems } = req.body;
         const date = new Date(Date.now());
         // const date = new Date();
@@ -50,14 +51,16 @@ export const placeOrder = async (req, res) => {
         // const yyyy = date.getFullYear();
 
         // create order
-        const order = new OrderId({
+        const payment = new Payments({
             _id: orderid,
             payment_id: paymentid,
             username: username,
             date: date,
         });
 
-        await order.save();
+        await payment.save();
+
+        console.log('Payment created');
 
         // insert cartItems
         cartItems.map(async (item) => {
@@ -74,6 +77,9 @@ export const placeOrder = async (req, res) => {
         res.status(200).json({
             message: "order placed successfully",
         })
+
+        console.log('Order created in database');
+        console.log('order controller exit');
     }
     catch (error) {
         res.status(500).json({ message: error.message });

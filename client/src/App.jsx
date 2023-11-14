@@ -8,6 +8,8 @@ import DataProvider from './context/DataProvider';
 import DetailView from './components/details/DetailView';
 import Cart from './components/cart/Cart';
 import Dashboard from './components/dashboard/Dashboard';
+import Success from './components/payment/Success';
+import Failure from './components/payment/Failure';
 
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
             <Route path='/product/:id' element={<DetailView />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/paymentsuccess' element={<Success />} />
+            <Route path='/paymentfailure' element={<Failure />} />
           </Routes>
         </Box>
       </BrowserRouter>

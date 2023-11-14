@@ -74,56 +74,101 @@ export const getKey = async () => {
 }
 
 
-export const initPayment = async (order, username) => {
-    const { data: { key_id } } = await getKey();
-    const { data: { user } } = await axios.get(`${URL}/getUserDetails/${username}`);
+export const initPayment = async (order, username, cartItems) => {
+    return new Promise(async (resolve, reject) => {
+        const { data: { key_id } } = await getKey();
+        const { data: { user } } = await axios.get(`${URL}/getUserDetails/${username}`);
 
-    var options = {
-        key: key_id,
-        amount: order.amount / 100,
-        currency: order.currency,
-        name: "Ecommerce Project Testing",
-        description: "Test Transaction",
-        image: "https://tanmayjaiswal.is-a.dev/img/favico/tJ.ico",
-        order_id: order.id,
+        var options = {
+            key: key_id,
+            amount: order.amount / 100,
+            currency: order.currency,
+            name: "Ecommerce Project Testing",
+            description: "Test Transaction",
+            image: "https://tanmayjaiswal.is-a.dev/img/favico/tJ.ico",
+            order_id: order.id,
 
-        prefill: {
-            name: user.firstname + " " + user.lastname,
-            email: user.email,
-            contact: user.phone,
-        },
+            prefill: {
+                name: user.firstname + " " + user.lastname,
+                email: user.email,
+                contact: user.phone,
+            },
 
-        // callback_url: "http://localhost:8000/paymentverification",
-        handler: async (response) => {
-            try {
-                const verifyURL = `${URL}/paymentverification`;
-                const { data } = await axios.post(verifyURL, response);
+            // callback_url: "http://localhost:8000/paymentverification",
+            // handler: async (response) => {
+            //     try {
+            //         const verifyURL = `${URL}/paymentverification`;
+            //         const body = {
+            //             username: username,
+            //             payment: response,
+            //             cartItems: cartItems
+            //         };
 
-            }
-            catch (error) {
-                console.log(error);
-            }
-        },
+            //         // console.log(body);
 
-        notes: {
-            address: "Razorpay Corporate Office"
-        },
+            //         const { data:{message} } = await axios.post(verifyURL, body);
+            //         console.log(message);
+            //     }
+            //     catch (error) {
+            //         console.log(error);
+            //     }
+            // },
 
-        theme: {
-            color: "#3399cc"
-        },
-    };
+            handler: async (response) => {
+                try {
+                    const verifyURL = `${URL}/paymentverification`;
+                    const body = {
+                        username: username,
+                        payment: response,
+                        cartItems: cartItems
+                    };
+            
+                    const result = await axios.post(verifyURL, body);
+                    // console.log(result);
+                    
+                    if (result.status === 200) {
+                        resolve({
+                            success: true,
+                            message: result.data.message,
+                            data: response
+                        });
+                    } else {
+                        reject({
+                            success: false,
+                            message: 'Payment verification failed',
+                            // error: data.message
+                        });
+                    }
+                }
+                catch (error) {
+                    reject({
+                        success: false,
+                        message: 'Error occurred while verifying the payment',
+                        error: error
+                    });
+                }
+            },
 
-    const razor = new window.Razorpay(options);
-    razor.open();
+            notes: {
+                address: "Razorpay Corporate Office"
+            },
+
+            theme: {
+                color: "#3399cc"
+            },
+        };
+
+        const razor = new window.Razorpay(options);
+        razor.open();
+    });
 }
 
 export const placeOrder = async (orderid, paymentid, username, cartItems) => {
     try {
-        const { data: {message} } = await axios.post(`${URL}/placeOrder`, { orderid, paymentid, username, cartItems });
-        return {status: 200, data: message};
+        const { data: { message } } = await axios.post(`${URL}/placeOrder`, { orderid, paymentid, username, cartItems });
+        return { status: 200, data: message };
     }
     catch (error) {
-        return {status: 500, data: error};
+        return { status: 500, data: error };
     }
 }

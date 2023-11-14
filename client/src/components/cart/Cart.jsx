@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { Box, Button, Grid, Typography, css } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import TotalBalance from './TotalBalance';
 import CartItem from './CartItem';
@@ -65,6 +65,49 @@ const Cart = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // const handlePayment = async () => {
+    //     if (!account) {
+    //         setOpen(true);
+    //         return;
+    //     }
+
+    //     try {
+    //         let price = 0, discount = 0;
+
+    //         cartItems.map(item => {
+    //             price += (item.price.mrp * item.quantity);
+    //             discount += ((item.price.mrp * item.quantity) - (item.price.cost * item.quantity));
+    //             return {};
+    //         })
+
+    //         // const {orderRes} = await checkout(price-discount+40);
+    //         // console.log(orderRes.id);
+    //         // await initPayment(orderRes, account, cartItems);
+
+
+    //         // database payment creation
+    //         const orderid = 'aaaaaaaaaa';
+    //         const paymentid = 'bbbbbbbbb';
+
+    //         const result = await placeOrder(orderid, paymentid, account, cartItems);
+    //         console.log(result.data);
+
+    //         if (result.status === 200) {
+    //             // empty cart
+    //             dispatch(resetCart());
+
+    //             // redirect to homepage
+    //             navigate('/');
+    //         }
+    //         else {
+    //             console.log(result);
+    //         }
+    //     }
+    //     catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
     const handlePayment = async () => {
         if (!account) {
             setOpen(true);
@@ -77,31 +120,43 @@ const Cart = () => {
             cartItems.map(item => {
                 price += (item.price.mrp * item.quantity);
                 discount += ((item.price.mrp * item.quantity) - (item.price.cost * item.quantity));
+                return {};
             })
 
-            // const {orderRes} = await checkout(price-discount+40);
-            // initPayment(orderRes, account);
+            const { orderRes } = await checkout(price - discount + 40);
+            // console.log(orderRes.id);
 
-            const orderid = 'aaaaaaaaaa';
-            const paymentid = 'bbbbbbbbb';
+            const { success, data, message } = await initPayment(orderRes, account, cartItems);
+            // console.log(paymentResponse);
 
-            const result = await placeOrder(orderid, paymentid, account, cartItems);
-            
-            if (result.status === 200) {
-                // empty cart
-                dispatch(resetCart());
+            const { razorpay_order_id, razorpay_payment_id } = data;
 
-                // redirect to homepage
-                navigate('/');
-            }
-            else {
-                console.log(result);
+            if (success) {
+                const result = await placeOrder(razorpay_order_id, razorpay_payment_id, account, cartItems);
+                
+                if (result.status === 200) {
+                    // empty cart
+                    console.log('resetting cart...');
+                    dispatch(resetCart());
+                    
+                    console.log(result.data);
+                    
+                    // redirect to homepage
+                    console.log('redirecting to homepage..');
+                    navigate(`/paymentsuccess?pid=${razorpay_payment_id}&oid=${razorpay_order_id}`);
+                }
+                else {
+                    console.log(result);
+                }
+            } else {
+                console.log(message);
             }
         }
         catch (error) {
             console.log(error);
         }
     }
+
 
     return (
         <>

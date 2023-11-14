@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import ejs from 'ejs';
 
 import Router from './routes/route.js';
 import Connection from './database/db.js';
@@ -9,6 +10,9 @@ import DefaultData from './default.js'
 const app = express();
 
 dotenv.config({ path: './.env' });
+
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 
 app.use(express.json());
 app.use(cors());

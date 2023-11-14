@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 
-const orderid = new mongoose.Schema({
+const payment = new mongoose.Schema({
     _id: String,
     payment_id: String,
     username: String,
@@ -15,6 +15,6 @@ const orderid = new mongoose.Schema({
 })
 
 
-const OrderId = new mongoose.model('orderId', orderid);
+const Payments = new mongoose.model('payments', payment);
 
-export default OrderId;
+export default Payments;
