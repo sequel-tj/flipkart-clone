@@ -12,7 +12,7 @@ import ProductDetail from "./ProductDetail";
 
 const component = css`
     background: #f2f2f2;
-    margin-top: 55px;
+    margin-top: 0px !important;
 `;
 
 
@@ -26,7 +26,7 @@ const gridContainer = css`
 
 
 const rightContainer = css`
-    margin-top: 50px;
+    margin-top: 20px;
     padding-left: 25px;
     & > p {
         margin-top: 10px;

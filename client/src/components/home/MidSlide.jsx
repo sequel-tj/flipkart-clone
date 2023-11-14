@@ -27,7 +27,7 @@ const rightComponent = css`
 
 const MidSlide = ({ products, title, showTimer }) => {
 
-    const adURL = 'https://drive.google.com/uc?export=view&id=1fEpWF0zU-FQkCT_N5X3dYlRE1fZGnPH7';
+    const adURL = 'https://rukminim1.flixcart.com/fk-p-flap/530/810/image/c3189f057185c2bc.jpg?q=20';
 
     return (
         <Box style={{display: "flex"}}>

@@ -156,7 +156,7 @@ const Dashboard = () => {
     const orderAPI = async () => {
         try {
             let { data, status } = await getOrderHistory(username);
-            console.log(data);
+            // console.log(data);
 
             if (status === 200) {
 

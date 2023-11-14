@@ -9,24 +9,30 @@ import { Link } from 'react-router-dom';
 import { getProducts } from "../../redux/actions/productActions";
 
 
-const searchContainer = {
-    width: '38%',
-    borderRadius: '2px',
-    backgroundColor: '#fff',
-    marginLeft: '10px',
-    display: 'flex'
-};
+const searchContainer = css`
+    width: 50%;
+    border-radius: 10px;
+    background-color: #f0f5ff;
+    margin-left: 24px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    @media only screen and (max-width: 1000px) {
+        width: 70%;
+    }
+`;
 
 const inputBaseSearch = {
-    paddingLeft: '20px',
+    // paddingLeft: '20px',
     width: '100%',
-    fontSize: 'unset'
+    fontSize: 'unset',
+    height: '40px',
 };
 
 const searchIconWrapper = {
-    color: 'blue',
-    padding: '5px',
-    display: 'flex'
+    color: '#979797',
+    padding: '0 8px',
+    display: 'flex',
 }
 
 const listWrapper = css`
@@ -54,16 +60,16 @@ const Search = () => {
     }
 
     return (
-        <Box style={searchContainer}>
+        <Box css={searchContainer}>
+            <Box style={searchIconWrapper}>
+                <SearchIcon />
+            </Box>
             <InputBase
                 style={inputBaseSearch}
                 placeholder="Search for products, brands and more"
                 onChange={(e) => getText(e.target.value)}
                 value={searchText}
             />
-            <Box style={searchIconWrapper}>
-                <SearchIcon />
-            </Box>
 
             {
                 searchText &&

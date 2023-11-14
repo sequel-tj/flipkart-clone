@@ -118,10 +118,14 @@ const LoginDiaglog = ({open, setOpen}) => {
     }
 
     const toggleSignup = () => {
+        // setSignup(signupInitialization);
+        // setLogin(loginIntialization);
         toggleAccount(accountInitialization.signup);
     }
-
+    
     const toggleLogin = () => {
+        // setLogin(loginIntialization);
+        // setSignup(signupInitialization);
         toggleAccount(accountInitialization.login);
     }
 
@@ -165,11 +169,11 @@ const LoginDiaglog = ({open, setOpen}) => {
                     {
                         account.view === 'login' ?
                         <Box css = {wrapper}>
-                            <TextField variant='standard' onChange={onValueChange} name='username' label="Enter username"/>
+                            <TextField variant='standard' autoComplete='off' onChange={onValueChange} name='username' label="Enter username"/>
 
                             {error && <Typography css={wrongCred}>Please enter valid username/password.</Typography>}
 
-                            <TextField variant='standard' type='password' onChange={onValueChange} name='password' label="Enter Password"/>
+                            <TextField variant='standard' autoComplete='off' type='password' onChange={onValueChange} name='password' label="Enter Password"/>
                             <Typography css={Text}> By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Typography>
                             <Button css = {LoginBtn} onClick={loginUser}>Login</Button>
                             <Typography style = {{textAlign: 'center'}}>OR</Typography>
@@ -178,12 +182,12 @@ const LoginDiaglog = ({open, setOpen}) => {
                         </Box>
                         :
                         <Box css = {wrapper}>
-                            <TextField variant='standard'  onChange={(e) => {onInputChange(e)}} name='firstname' label="Enter Firstname"/>
-                            <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='lastname' label="Enter Lastname"/>
-                            <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='username' label="Enter username"/>
-                            <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='email' label="Enter email"/>
-                            <TextField variant='standard' type='password' onChange={(e) => {onInputChange(e)}} name='password' label="Enter Password"/>
-                            <TextField variant='standard' onChange={(e) => {onInputChange(e)}} name='phone' label="Enter Phone"/>
+                            <TextField variant='standard' autoComplete='off' onChange={(e) => {onInputChange(e)}} name='firstname' label="Enter Firstname"/>
+                            <TextField variant='standard' autoComplete='off' onChange={(e) => {onInputChange(e)}} name='lastname' label="Enter Lastname"/>
+                            <TextField variant='standard' autoComplete='off' onChange={(e) => {onInputChange(e)}} name='username' label="Enter username"/>
+                            <TextField variant='standard' autoComplete='off' onChange={(e) => {onInputChange(e)}} name='email' label="Enter email"/>
+                            <TextField variant='standard' autoComplete='off' type='password' onChange={(e) => {onInputChange(e)}} name='password' label="Enter Password"/>
+                            <TextField variant='standard' autoComplete='off' onChange={(e) => {onInputChange(e)}} name='phone' label="Enter Phone"/>
 
                             <Button css = {LoginBtn} onClick={signupUser}>Continue</Button>
                             {/* <Button css = {LoginBtn}>Sign up</Button> */}

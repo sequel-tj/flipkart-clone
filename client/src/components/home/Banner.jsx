@@ -26,7 +26,7 @@ const responsive = {
 
   const image = css`
     width: 100%;
-    height: 280px;
+    height: 240px;
     @media (max-width: 900px) {
       object-fit: cover;
       height: 180px;

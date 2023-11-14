@@ -17,7 +17,7 @@ const App = () => {
     <DataProvider>
       <BrowserRouter>
         <Header />
-        <Box style={{ marginTop: 55 }}>
+        <Box style={{ margin: '65px 0 10px 10px' }}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/product/:id' element={<DetailView />} />
