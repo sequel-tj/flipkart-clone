@@ -115,6 +115,7 @@ const LoginDiaglog = ({open, setOpen}) => {
     const handleClose = () => {
         setError(false);
         setOpen(false);
+        toggleAccount(accountInitialization.login);
     }
 
     const toggleSignup = () => {
@@ -143,6 +144,7 @@ const LoginDiaglog = ({open, setOpen}) => {
         if (!response) return;
         handleClose();
         setAccount(signup.username);
+        toggleAccount(accountInitialization.login);
     }
 
     const loginUser = async () => {

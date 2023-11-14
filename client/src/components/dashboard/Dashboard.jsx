@@ -156,7 +156,7 @@ const Dashboard = () => {
     const orderAPI = async () => {
         try {
             let { data, status } = await getOrderHistory(username);
-            // console.log(data);
+            console.log(data);
 
             if (status === 200) {
 
@@ -308,8 +308,10 @@ const Dashboard = () => {
                                     <Card sx={{ width: '100%', height: '60vh' }}>
                                         <CardContent>
                                             {
-                                                barData && barData.length > 0 &&
+                                                barData && barData.length > 0 ?
                                                 <MixBarChart barGraphData={barData} />
+                                                :
+                                                <MixBarChart barGraphData={[]} />
                                             }
                                         </CardContent>
                                     </Card>
@@ -318,8 +320,10 @@ const Dashboard = () => {
                                     <Card sx={{ maxWidth: '100%', height: '60vh' }}>
                                         <CardContent style={{ textAlign: 'center', width: '100%' }}>
                                             {
-                                                Object.keys(category).length &&
+                                                Object.keys(category).length > 0 ?
                                                 <PieChartCustomAcitve categories={category} />
+                                                :
+                                                <PieChartCustomAcitve categories={[]} />
                                             }
                                             <Typography variant="h6" style={{ fontWeight: "600" }}>Categories</Typography>
                                         </CardContent>
