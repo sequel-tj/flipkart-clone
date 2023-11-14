@@ -128,7 +128,7 @@ export const products = [
 ];
 
 
-export const orderIds = [
+export const payments = [
     {
         _id: "order_MzTK9SjMloeq2A",
         payment_id: "pay_MzTKdEttg4o3rI",

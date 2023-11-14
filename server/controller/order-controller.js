@@ -80,6 +80,7 @@ export const placeOrder = async (req, res) => {
 
         console.log('Order created in database');
         console.log('order controller exit');
+        console.log('--------------------------------\n');
     }
     catch (error) {
         res.status(500).json({ message: error.message });
