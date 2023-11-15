@@ -40,5 +40,7 @@
     <li><h6>PORT = </h6></li>
     <li><h6>DB_USER = </h6></li>
     <li><h6>DB_PASSWORD = </h6></li>
+    <li><h6>RAZORPAY_API_KEY = </h6></li>
+    <li><h6>RAZORPAY_API_SECRET = </h6></li>
   </ul>
 </ul>
