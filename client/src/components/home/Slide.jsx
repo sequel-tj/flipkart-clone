@@ -92,33 +92,36 @@ const Slide = ({ products, title, showTimer }) => {
 
             <Divider />
 
-            <Carousel
-                responsive={responsive}
-                swipeable={false}
-                draggable={false}
-                showDots={false}
-                infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={4000}
-                keyBoardControl={true}
-                centerMode={true}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px"
-                containerClass="carousel-container"
-            >
-                {
-                    products.map((product, key) => (
-                        <Link key={key} to={`product/${product.id}`} style={{textDecoration: 'none'}}>
-                            <Box style={{ textAlign: "center", padding: "25px 15px" }}>
-                                <img css={image} src={product.url} key={key} alt="product" />\
-                                <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
-                                <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
-                                <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
-                            </Box>
-                        </Link>
-                    ))
-                }
-            </Carousel>
+            {
+                products && products.length > 0 &&
+                <Carousel
+                    responsive={responsive}
+                    swipeable={false}
+                    draggable={false}
+                    showDots={false}
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={4000}
+                    keyBoardControl={true}
+                    centerMode={true}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+                    containerClass="carousel-container"
+                >
+                    {
+                        products.map((product, key) => (
+                            <Link key={key} to={`product/${product.id}`} style={{ textDecoration: 'none' }}>
+                                <Box style={{ textAlign: "center", padding: "25px 15px" }}>
+                                    <img css={image} src={product.url} key={key} alt="product" />\
+                                    <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
+                                    <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
+                                    <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
+                                </Box>
+                            </Link>
+                        ))
+                    }
+                </Carousel>
+            }
         </Box>
     )
 }
