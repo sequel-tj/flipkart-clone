@@ -61,7 +61,7 @@ const dealText = css`
 
 const image = css`
     width: auto;
-    height: 150px;
+    height: 120px;
 `
 
 const text = css`

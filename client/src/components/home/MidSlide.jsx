@@ -5,6 +5,7 @@ import Slide from "./Slide";
 
 const leftComponent = css`
     width: 83%;
+    height: 90%;
     @media (max-width: 1023px) {
         width: 100%;
     }
@@ -12,6 +13,7 @@ const leftComponent = css`
 
 const rightComponent = css` 
     width: 17%;
+    height: 90%;
     background: #fff;
     margin-left: 10px;
     padding: 5px;
@@ -30,7 +32,7 @@ const MidSlide = ({ products, title, showTimer }) => {
     const adURL = 'https://rukminim1.flixcart.com/fk-p-flap/530/810/image/c3189f057185c2bc.jpg?q=20';
 
     return (
-        <Box style={{display: "flex"}}>
+        <Box style={{display: "flex", height: "320px"}}>
             <Box css={leftComponent}>
                 <Slide products={products} title={title} showTimer={showTimer} />
             </Box>

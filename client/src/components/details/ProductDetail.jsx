@@ -41,7 +41,7 @@ const ProductDetail = ({ product }) => {
 
     return (
         <>
-            <Typography>{product.title.longTitle}</Typography>
+            <Typography variant='h6'>{product.title.longTitle}</Typography>
             <Typography style={{ marginTop: 5, color: '#878787', fontSize: 14 }}>
                 8 ratings & 1 review
                 <Box component="span"><img src={fassured} style={{ width: 77, marginLeft: 20 }} alt="flipkart assured img" /></Box>
