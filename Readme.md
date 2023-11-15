@@ -13,22 +13,22 @@
 <div>
   <div>  
     <h4>- Homepage</h4>
-    <img src="https://github.com/sequel-tj/necesso-cart/assets/74481733/f1a346aa-577e-4ad1-b6f6-3875a6475a66">
+    <img src="https://github.com/sequel-tj/shopin-cart/assets/74481733/8d89d402-a019-4cb7-b608-cac1b82871b5">
   </div>
   
   <div>
     <h4>- Product Detail Component:</h4>
-    <img src="https://github.com/sequel-tj/necesso-cart/assets/74481733/45239eab-dd83-4f2e-8454-6b2148334f44">
+    <img src="https://github.com/sequel-tj/shopin-cart/assets/74481733/cf02ec8a-4b3e-4857-89f2-4b083ddcd274">
   </div>
   
   <div>
     <h4>- Cart Component:</h4>
-    <img src="https://github.com/sequel-tj/necesso-cart/assets/74481733/6e7baf93-1c3e-4037-a534-34a9d72a3b69">
+    <img src="https://github.com/sequel-tj/shopin-cart/assets/74481733/5d9de2c2-0dbe-408a-8310-7b9a7adf9f00">
   </div>
   
   <div>
   <h4>- Customer Dashboard Component</h4>
-  <img src="https://github.com/sequel-tj/necesso-cart/assets/74481733/055b1d0b-0b20-4eb8-bac1-c73a1e6c74ad">
+  <img src="https://github.com/sequel-tj/shopin-cart/assets/74481733/00912bc9-d2d8-4fd3-af5d-0ecb959df1d0">
   </div>
 </div>
 
