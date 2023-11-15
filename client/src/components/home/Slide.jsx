@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { Box, Typography, css, Button, Divider } from "@mui/material";
+import { Box, Typography, css, Divider } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import Countdown from 'react-countdown';
 
@@ -51,13 +51,13 @@ const dealText = css`
     line-height: 32px;
 `
 
-const viewAllBtn = css`
-    margin-left: auto;
-    background: #2874f0;
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: 600;
-`
+// const viewAllBtn = css`
+//     margin-left: auto;
+//     background: #2874f0;
+//     border-radius: 2px;
+//     font-size: 12px;
+//     font-weight: 600;
+// `
 
 const image = css`
     width: auto;

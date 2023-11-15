@@ -54,6 +54,7 @@ const TotalBalance = ({ cartItems }) => {
         cartItems.map(item => {
             price += (item.price.mrp * item.quantity);
             discount += ((item.price.mrp * item.quantity) - (item.price.cost * item.quantity));
+            return {};
         })
 
         setPrice(price);
@@ -62,7 +63,7 @@ const TotalBalance = ({ cartItems }) => {
 
     useEffect(() => {
         totalAmt();
-    }, [cartItems])
+    })
 
     return (
         <Box>

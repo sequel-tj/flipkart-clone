@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Box, Menu, MenuItem, Typography, css } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const component = css`
     margin-top: 5px;

@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
-import { Badge, Button, Box, Typography, css } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
-import { useContext, useState } from "react";
+import { Box, Typography, css } from "@mui/material";
+// import { ShoppingCart } from "@mui/icons-material";
+import { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 // components
 import LoginDiaglog from "../login/LoginDialog";
@@ -65,19 +65,19 @@ const container = css`
     // }
 `;
 
-const loginBtn = css`
-    background: #979797;
-    color: #ffffff !important;
-    box-shadow: none !important;
-    padding: 5px 40px;
-    border-radius: 2px;
-    font-weight: 600;
-    height: 32px;
-    transition: 0.3s;
-    :hover {
-        background: #878787;
-    }
-`;
+// const loginBtn = css`
+//     background: #979797;
+//     color: #ffffff !important;
+//     box-shadow: none !important;
+//     padding: 5px 40px;
+//     border-radius: 2px;
+//     font-weight: 600;
+//     height: 32px;
+//     transition: 0.3s;
+//     :hover {
+//         background: #878787;
+//     }
+// `;
 
 const userbtn = css`
     :hover {
@@ -97,7 +97,7 @@ const CustomButtons = () => {
 
     // const [open, setOpen] = useState(false);
     const { account, setAccount, open, setOpen } = useContext(DataContext);
-    const { cartItems } = useSelector(state => state.cart);
+    // const { cartItems } = useSelector(state => state.cart);
     // const navigate = useNavigate();
 
     const openDialog = () => {

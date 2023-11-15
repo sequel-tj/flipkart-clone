@@ -37,9 +37,12 @@ const searchIconWrapper = {
 
 const listWrapper = css`
     position: absolute;
-    background: #ffffff;
-    margin-top: 33px;
+    background: #f0f5ff;
+    top: 46px;
+    width: 46.75%;
     color: #000000;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 `;
 
 

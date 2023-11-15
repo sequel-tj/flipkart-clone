@@ -40,12 +40,12 @@ const Home = () => {
                 <MidSlide products={products} title="Deal of the Day" showTimer={true} />
                 <MidSection />
                 <Slide products={products} title="Discounts for You" showTimer={false} />
-                <Slide products={products} title="Suggesting Items" showTimer={false} />
-                <Slide products={products} title="Top Selection" showTimer={false} />
-                <Slide products={products} title="Recommend Items" showTimer={false} />
+                {/* <Slide products={products} title="Suggesting Items" showTimer={false} />
+                <Slide products={products} title="Top Selection" showTimer={false} /> */}
+                {/* <Slide products={products} title="Recommend Items" showTimer={false} />
                 <Slide products={products} title="Trending Offers" showTimer={false} />
                 <Slide products={products} title="Season's top Picks" showTimer={false} />
-                <Slide products={products} title="Top Deals on Accessories" showTimer={false} />
+                <Slide products={products} title="Top Deals on Accessories" showTimer={false} /> */}
             </Box>
         </>
     );

@@ -29,17 +29,17 @@ const gridItem = css`
     // margin: 10px;
 `
 
-const rightCard = css`
-    padding: 10px;
-`
+// const rightCard = css`
+//     padding: 10px;
+// `
 
-const priceTitle = css`
-    font-weight: 600;
-`
+// const priceTitle = css`
+//     font-weight: 600;
+// `
 
-const priceSubTitle = css`
-    font-size: 14px;
-`
+// const priceSubTitle = css`
+//     font-size: 14px;
+// `
 
 const gradientBlue = css`
     background: rgb(40, 34, 70);
@@ -203,6 +203,7 @@ const Dashboard = () => {
                     totalcost += cost;
                     totaldiscount += discount;
 
+                    return {};
                 })
 
                 catArray.forEach((item) => {
@@ -223,13 +224,13 @@ const Dashboard = () => {
 
     useEffect(() => { 
         if (username.length > 0) orderAPI();
-    }, [username])
+    })
 
 
     return (
         <>
             {
-                username.length == 0 ?
+                username.length === 0 ?
                     <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                         {
                             setTimeout(() => {

@@ -1,16 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Box, Button, css } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { addToCart, resetCart } from '../../redux/actions/cartActions';
-import { checkout, getKey, initPayment, placeOrder } from '../../service/api'
+import { checkout, initPayment, placeOrder } from '../../service/api'
 import { DataContext } from '../../context/DataProvider';
 // import tjlogo from '../../img/tj.png';
 
