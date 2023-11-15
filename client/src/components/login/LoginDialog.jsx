@@ -5,6 +5,7 @@ import { useState, useContext } from 'react';
 import { authenticateLogin, authenticateSignup } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
+
 const components = {
     height: '75vh',
     width: '90vh',
@@ -141,22 +142,30 @@ const LoginDiaglog = ({open, setOpen}) => {
 
     const signupUser = async () => {
         let response = await authenticateSignup(signup);
-        if (!response) return;
-        handleClose();
-        setAccount(signup.username);
-        toggleAccount(accountInitialization.login);
+        if (response.status === 500) {
+            console.log(response.error);
+            alert(response.error.data.message.message);
+            return;
+        }
+        else {
+            handleClose();
+            setAccount(signup.username);
+            toggleAccount(accountInitialization.login);
+        }
     }
 
     const loginUser = async () => {
-        const {status, data: {user}} = await authenticateLogin(login);
-        // console.log(user);
+        const {status, data, error } = await authenticateLogin(login);
+        // console.log(error);
         
         if (status === 200) {
+            const {user} = data;
             handleClose();
             setAccount(user.username);
         }
         else {
             setError(true);
+            alert(error.data.message);
         }
     }
 

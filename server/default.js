@@ -8,7 +8,7 @@ const DefaultData = async () => {
         // await Orders.deleteMany();
         // await Payments.deleteMany();
         // await Orders.insertMany(orders);
-        // await Payments.insertMany(Payments);
+        // await Payments.insertMany(payments);
 
         // console.log('Data inserted successfully');
     }

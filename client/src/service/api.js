@@ -9,7 +9,7 @@ export const authenticateSignup = async (data) => {
     }
     catch (error) {
         console.log("error while calling the signup api:", error);
-        return error.response;
+        return {status: 500, error: error.response};
     }
 }
 
@@ -20,7 +20,7 @@ export const authenticateLogin = async (data) => {
     }
     catch (error) {
         console.log("error while calling the login api:", error);
-        return error.response;
+        return {status: 500, error: error.response};
     }
 }
 
@@ -31,7 +31,7 @@ export const getUserDetails = async (username) => {
     }
     catch (error) {
         console.log("user not exits");
-        return error.response;
+        return {status: 500, error: error.response};
     }
 }
 
@@ -94,36 +94,10 @@ export const initPayment = async (order, username, cartItems) => {
                 contact: user.phone,
             },
 
-            // callback_url: "http://localhost:8000/paymentverification",
-            // handler: async (response) => {
-            //     try {
-            //         const verifyURL = `${URL}/paymentverification`;
-            //         const body = {
-            //             username: username,
-            //             payment: response,
-            //             cartItems: cartItems
-            //         };
-
-            //         // console.log(body);
-
-            //         const { data:{message} } = await axios.post(verifyURL, body);
-            //         console.log(message);
-            //     }
-            //     catch (error) {
-            //         console.log(error);
-            //     }
-            // },
-
             handler: async (response) => {
                 try {
                     const verifyURL = `${URL}/paymentverification`;
-                    const body = {
-                        username: username,
-                        payment: response,
-                        cartItems: cartItems
-                    };
-            
-                    const result = await axios.post(verifyURL, body);
+                    const result = await axios.post(verifyURL, response);
                     // console.log(result);
                     
                     if (result.status === 200) {

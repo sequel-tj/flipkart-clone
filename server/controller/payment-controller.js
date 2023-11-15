@@ -1,7 +1,5 @@
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
-
-import { placeOrder } from './order-controller.js';
 import dotenv from 'dotenv';
 dotenv.config({ path: '../.env' });
 
@@ -43,10 +41,7 @@ export const checkout = async (req, res) => {
 export const paymentVerification = async (req, res) => {
 
     try {
-        // console.log(req.body)
-        const { username, payment, cartItems } = req.body;
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = payment;
-
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
 
         const expectedSign = crypto
@@ -55,25 +50,11 @@ export const paymentVerification = async (req, res) => {
             .digest("hex");
 
         if (razorpay_signature === expectedSign) {
-            console.log('Payment Received.');
-            console.log('Payment verified successfully.');
-
-            // database payment creation
-            // const orderid = razorpay_order_id;
-            // const paymentid = razorpay_payment_id;
-
-            // const mes = await placeOrder({ orderid, paymentid, username, cartItems });
-            // console.log('\nplaceOrder message');
-            // console.log(mes);
-
-            // success page
-            // if (status === 200)
-            //   res.redirect(`http://localhost:3000/paymentsuccess?pid=${razorpay_payment_id}&oid=${razorpay_order_id}`);
-            // else
-                // res.redirect(`http://localhost:3000/paymentfailure`);
-
-            
             console.log('payment controller');
+            console.log('Payment verified successfully.');
+            console.log('payment controller exits');
+            console.log('Payment Received.');
+
             return res.status(200).json({
                 message: "Order placed successfully",
             })
@@ -89,4 +70,3 @@ export const paymentVerification = async (req, res) => {
         res.status(500).json({ message: 'internal server error', error: error.error });
     }
 }
-

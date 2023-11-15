@@ -12,10 +12,6 @@ export const getOrderIds = async (req, res) => {
             .sort({ 'date': 1 })
             .select({ 'date': 1, '_id': 1 });
 
-        // let orders = orderIds.map((order) => {
-        //     return order._id;
-        // })
-
         res.status(200).json(orderIds);
     }
     catch (error) {
@@ -24,7 +20,6 @@ export const getOrderIds = async (req, res) => {
 }
 
 export const getOrders = async (req, res) => {
-    // const username = req.params.username;
     const orderid = req.params.oid;
 
     try {

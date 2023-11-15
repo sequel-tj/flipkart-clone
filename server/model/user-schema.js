@@ -17,10 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     username: {
         type: String,
-        required: true,
         trim: true,
-        unique: true,
-        index: true
     },
     email: {
         type: String,
@@ -34,13 +31,15 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     phone: {
-        type: String, 
-        required: true
+        type: Number, 
+        required: true,
+        min: 1000000000,
+        max: 9999999999,
     },
-    Date : {
-        type: Date,
-        default: Date.now() + 1.98e+7
-    }
+    // Date : {
+    //     type: Date,
+    //     default: Date.now() + 1.98e+7
+    // }
 });
 
 const User = mongoose.model('user', userSchema);
