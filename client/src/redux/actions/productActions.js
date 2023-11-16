@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as actionType from '../constants/productConstant';
 
 
-// const URL = "http://localhost:8000";
-const URL = "https://shopin-server.onrender.com";
+const URL = "http://localhost:8000";
+// const URL = "https://shopin-server.onrender.com";
 
 
 export const getProducts = () => async (dispatch) => {

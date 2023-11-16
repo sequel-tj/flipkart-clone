@@ -10,6 +10,7 @@ import Cart from './components/cart/Cart';
 import Dashboard from './components/dashboard/Dashboard';
 import Success from './components/payment/Success';
 import Failure from './components/payment/Failure';
+import MyOrders from './components/orders/MyOrders';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
             <Route path='/product/:id' element={<DetailView />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/myOrders' element={<MyOrders />} />
             <Route path='/paymentsuccess' element={<Success />} />
             <Route path='/paymentfailure' element={<Failure />} />
           </Routes>

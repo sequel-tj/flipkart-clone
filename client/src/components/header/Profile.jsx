@@ -71,6 +71,12 @@ const Profile = ({ account, setAccount }) => {
                     </Link>
                 </MenuItem>
 
+                <MenuItem onClick={handleClose}>
+                    <Link to="/myOrders" style={{ textDecoration: 'none', textTransform: 'none', color: '#000' }}>
+                        <Typography>My Orders</Typography>
+                    </Link>
+                </MenuItem>
+
                 <MenuItem onClick={() => { handleClose(); logoutUser(); }}>
                     <PowerSettingsNewIcon color="primary" fontSize="small" />
                     <Typography css={logoutBtn}>Logout</Typography>

@@ -65,49 +65,6 @@ const Cart = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // const handlePayment = async () => {
-    //     if (!account) {
-    //         setOpen(true);
-    //         return;
-    //     }
-
-    //     try {
-    //         let price = 0, discount = 0;
-
-    //         cartItems.map(item => {
-    //             price += (item.price.mrp * item.quantity);
-    //             discount += ((item.price.mrp * item.quantity) - (item.price.cost * item.quantity));
-    //             return {};
-    //         })
-
-    //         // const {orderRes} = await checkout(price-discount+40);
-    //         // console.log(orderRes.id);
-    //         // await initPayment(orderRes, account, cartItems);
-
-
-    //         // database payment creation
-    //         const orderid = 'aaaaaaaaaa';
-    //         const paymentid = 'bbbbbbbbb';
-
-    //         const result = await placeOrder(orderid, paymentid, account, cartItems);
-    //         console.log(result.data);
-
-    //         if (result.status === 200) {
-    //             // empty cart
-    //             dispatch(resetCart());
-
-    //             // redirect to homepage
-    //             navigate('/');
-    //         }
-    //         else {
-    //             console.log(result);
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
     const handlePayment = async () => {
         if (!account) {
             setOpen(true);

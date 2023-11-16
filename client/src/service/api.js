@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const URL = 'http://localhost:8000';
-const URL = 'https://shopin-server.onrender.com';
+const URL = 'http://localhost:8000';
+// const URL = 'https://shopin-server.onrender.com';
 
 
 export const authenticateSignup = async (data) => {
