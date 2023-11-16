@@ -66,14 +66,14 @@ const Profile = ({ account, setAccount }) => {
             >
 
                 <MenuItem onClick={handleClose}>
-                    <Link to="/dashboard" style={{ textDecoration: 'none', textTransform: 'none', color: '#000' }}>
-                        <Typography>Dashboard</Typography>
+                    <Link to="/myOrders" style={{ textDecoration: 'none', textTransform: 'none', color: '#000' }}>
+                        <Typography>My Orders</Typography>
                     </Link>
                 </MenuItem>
 
                 <MenuItem onClick={handleClose}>
-                    <Link to="/myOrders" style={{ textDecoration: 'none', textTransform: 'none', color: '#000' }}>
-                        <Typography>My Orders</Typography>
+                    <Link to="/dashboard" style={{ textDecoration: 'none', textTransform: 'none', color: '#000' }}>
+                        <Typography>Dashboard</Typography>
                     </Link>
                 </MenuItem>
 
