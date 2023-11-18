@@ -6,6 +6,7 @@ import Countdown from 'react-countdown';
 import "react-multi-carousel/lib/styles.css";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 const responsive = {
@@ -30,6 +31,8 @@ const responsive = {
 const component = css`
     margin-top: 10px;
     background-color: #fff;
+    height: 100%;
+    width: 100%;
 `
 
 const deal = css`
@@ -76,6 +79,10 @@ const Slide = ({ products, title, showTimer }) => {
         return <Box variant="span">{hours}:{minutes}:{seconds} Left</Box>
     }
 
+    const renderer2 = ({ hours, minutes, seconds }) => {
+        return <Box variant="span">{minutes}:{seconds} Left</Box>
+    }
+
     return (
         <Box css={component}>
             <Box css={deal}>
@@ -93,34 +100,44 @@ const Slide = ({ products, title, showTimer }) => {
             <Divider />
 
             {
-                products && products.length > 0 &&
-                <Carousel
-                    responsive={responsive}
-                    swipeable={false}
-                    draggable={false}
-                    showDots={false}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={4000}
-                    keyBoardControl={true}
-                    centerMode={true}
-                    dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
-                    containerClass="carousel-container"
-                >
-                    {
-                        products.map((product, key) => (
-                            <Link key={key} to={`product/${product.id}`} style={{ textDecoration: 'none' }}>
-                                <Box style={{ textAlign: "center", padding: "25px 15px" }}>
-                                    <img css={image} src={product.url} key={key} alt="product" />\
-                                    <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
-                                    <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
-                                    <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
-                                </Box>
-                            </Link>
-                        ))
-                    }
-                </Carousel>
+                products && products.length > 0 ?
+                    <Carousel
+                        responsive={responsive}
+                        swipeable={false}
+                        draggable={false}
+                        showDots={false}
+                        infinite={true}
+                        autoPlay={true}
+                        autoPlaySpeed={4000}
+                        keyBoardControl={true}
+                        centerMode={true}
+                        dotListClass="custom-dot-list-style"
+                        itemClass="carousel-item-padding-40-px"
+                        containerClass="carousel-container"
+                    >
+                        {
+                            products.map((product, key) => (
+                                <Link key={key} to={`product/${product.id}`} style={{ textDecoration: 'none' }}>
+                                    <Box style={{ textAlign: "center", padding: "25px 15px" }}>
+                                        <img css={image} src={product.url} key={key} alt="product" />\
+                                        <Typography css={text} style={{ fontWeight: "600", color: "#212121" }}>{product.title.shortTitle}</Typography>
+                                        <Typography css={text} style={{ color: "green" }}>{product.discount}</Typography>
+                                        <Typography css={text} style={{ opacity: "0.6", color: "#212121" }}>{product.tagline}</Typography>
+                                    </Box>
+                                </Link>
+                            ))
+                        }
+                    </Carousel>
+                    :
+                    <Box style={{ display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '80%' }}>
+                        <Typography style={{ margin: '10px', }}>
+                            The backend server may be paused due to inactivity as the server is deployed on "render" using the free plan.
+                        </Typography>
+                        <Typography>Please wait, it will respond back within :</Typography>
+                        <Typography css={timer} style={{ margin: '10px', fontSize: "32px" }}>
+                            <Countdown date={Date.now() + 120000} renderer={renderer2} />
+                        </Typography>
+                    </Box>
             }
         </Box>
     )
