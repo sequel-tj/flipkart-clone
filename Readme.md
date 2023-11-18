@@ -4,7 +4,7 @@
   <ul>
     <li><strong>Technologies Used</strong>:<i> MERN Stack (MongoDB, Express.js, React.js, Node.js)</i></li>
     <li><strong>Project Application:</strong> <i>E-commerce</i></li>
-    <li><strong>Project Description:</strong> <i>This project is a clone of the popular e-commerce platform, Flipkart. The aim is to replicate the key features of Flipkart while adding a unique feature - a customer dashboard that provides insights into the customer’s monthly spending and their major areas of expenditure. Currently, the landing page/home page and user authentication feature have been implemented.</i></li>
+    <li><strong>Project Description:</strong> <i>This project is inspired by the popular e-commerce platform, Flipkart. The aim is to replicate the key features of Flipkart while adding a unique feature - a customer dashboard that provides insights into the customer’s monthly spending and their major areas of expenditure. Currently, the landing page/home page and user authentication feature have been implemented.</i></li>
   </ul>
 </div>
 
